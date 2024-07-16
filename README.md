@@ -1,6 +1,6 @@
 # Animated Character Extension
 
-![Animated Character](https://example.com/path/to/your/animated-character-image.gif)
+![Animated Character](https://github.com/11111Divyam11111/VS/blob/main/animation.png?raw=true)
 
 ## Overview
 
