@@ -1,0 +1,87 @@
+// The module 'vscode' contains the VS Code extensibility API
+// Import the module and reference it with the alias vscode in your code below
+const vscode = require('vscode');
+
+// This method is called when your extension is activated
+// Your extension is activated the very first time the command is executed
+
+/**
+ * @param {vscode.ExtensionContext} context
+ */
+function activate(context) {
+    // Use the console to output diagnostic information (console.log) and errors (console.error)
+    // This line of code will only be executed once when your extension is activated
+    console.log('Congratulations, your extension "animated-character-extension" is now active!');
+
+    // Register the command to show the animation
+    let disposable = vscode.commands.registerCommand('test.showAnimation', function () {
+        const panel = vscode.window.createWebviewPanel(
+            'animatedCharacter', 
+            'Animated Character', 
+            vscode.ViewColumn.One, 
+            {
+                enableScripts: true
+            }
+        );
+
+        // Set the content of the webview
+        panel.webview.html = getWebviewContent();
+    });
+
+    context.subscriptions.push(disposable);
+}
+
+// This method is called when your extension is deactivated
+function deactivate() {}
+
+function getWebviewContent() {
+    return `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Animated Character</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-start;
+                height: 100vh;
+                margin: 0;
+                background-color: transparent;
+            }
+            #animation {
+                width: 20vw;
+                height: 20vh;
+                position: fixed;
+                top: 80vh;
+                right: 10px;
+                z-index: 1000;
+                pointer-events: none; /* To ensure the animation doesn't block editor interactions */
+            }
+        </style>
+    </head>
+    <body>
+        <div id="animation"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+        <script>
+            var animationData = {
+                "nm":"Main Scene","ddd":0,"h":500,"w":500,"meta":{"g":"@lottiefiles/creator 1.17.0"},"layers":[{"ty":0,"nm":"lil soona blob boy","sr":1,"st":0,"op":184,"ip":0,"hd":false,"ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[570,608]},"s":{"a":0,"k":[-50,50]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[285,304]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"ef":[],"w":1000,"h":1000,"refId":"precomp_previousbookings_ace8b239-0d56-4129-bdc8-79450b20233a","ind":1}],"v":"5.7.0","fr":24,"op":184,"ip":0,"assets":[{"nm":"previousbookings_1","id":"precomp_previousbookings_ace8b239-0d56-4129-bdc8-79450b20233a","fr":24,"layers":[{"ty":3,"nm":"NULL CONTROL 2","sr":1,"st":0,"op":240,"ip":0,"hd":false,"ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[50,50,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.36,"y":0},"i":{"x":0.64,"y":1},"s":[553.457,667.457,0],"t":0},{"o":{"x":0.36,"y":0},"i":{"x":0.64,"y":1},"s":[561.457,615.457,0],"t":57},{"o":{"x":0.36,"y":0},"i":{"x":0.64,"y":1},"s":[417.457,629.457,0],"t":105},{"o":{"x":0.36,"y":0},"i":{"x":0.64,"y":1},"s":[497.457,589.457,0],"t":147},{"s":[553.457,667.457,0],"t":183}],"ix":2},"r":{"a":0,"k":0,"ix":10},"sa":{"a":0,"k":0},"o":{"a":0,"k":0,"ix":11}},"ef":[],"ind":1},{"ty":4,"nm":"Shape Layer 9","sr":1,"st":0,"op":178,"ip":5,"hd":false,"ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[53.457,167.457,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6},"sk":{"a":0,"k":0},"p":{"a":0,"k":[50,50,0],"ix":2},"r":{"a":0,"k":0,"ix":10},"sa":{"a":0,"k":0},"o":{"a":0,"k":100,"ix":11}},"ef":[],"shapes":[{"ty":"gr","bm":0,"hd":false,"mn":"ADBE Vector Group","nm":"Ellipse 1","ix":1,"cix":2,"np":3,"it":[{"ty":"el","bm":0,"hd":false,"mn":"ADBE Vector Shape - Ellipse","nm":"Ellipse Path 1","d":1,"p":{"a":0,"k":[0,0],"ix":3},"s":{"a":0,"k":[46.914,46.914],"ix":2}},{"ty":"st","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Stroke","nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":0,"ix":5},"c":{"a":0,"k":[0.1804,0.0118,0.898,1],"ix":3}},{"ty":"fl","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Fill","nm":"Fill 1","c":{"a":0,"k":[0.1804,0.0118,0.898,1],"ix":4},"r":1,"o":{"a":0,"k":100,"ix":5}},{"ty":"tr","a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"sk":{"a":0,"k":0,"ix":4},"p":{"a":0,"k":[53.457,167.457],"ix":2},"r":{"a":0,"k":0,"ix":6},"sa":{"a":0,"k":0,"ix":5},"o":{"a":0,"k":100,"ix":7}}]}],"ind":2,"parent":1},{"ty":4,"nm":"Shape Layer 11","sr":1,"st":180,"op":184,"ip":178,"hd":false,"ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[-9,204.759,0],"ix":1},"s":{"a":0,"k":[58,58,100],"ix":6},"sk":{"a":0,"k":0},"p":{"a":0,"k":[551,664.759,0],"ix":2},"r":{"a":0,"k":0,"ix":10},"sa":{"a":0,"k":0},"o":{"a":0,"k":100,"ix":11}},"ef":[],"shapes":[{"ty":"gr","bm":0,"hd":false,"mn":"ADBE Vector Group","nm":"Shape 1","ix":1,"cix":2,"np":3,"it":[{"ty":"sh","bm":0,"hd":false,"mn":"ADBE Vector Shape - Group","nm":"Path 1","ix":1,"d":1,"ks":{"a":0,"k":{"c":false,"i":[[-40,-40],[-32,44]],"o":[[40,40],[32,-44]],"v":[[-94,192],[76,188]]},"ix":2}},{"ty":"st","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Stroke","nm":"Stroke 1","lc":2,"lj":1,"ml":4,"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":33,"ix":5},"c":{"a":0,"k":[0.1804,0.0118,0.898,1],"ix":3}},{"ty":"tr","a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"sk":{"a":0,"k":0,"ix":4},"p":{"a":0,"k":[0,0],"ix":2},"r":{"a":0,"k":0,"ix":6},"sa":{"a":0,"k":0,"ix":5},"o":{"a":0,"k":100,"ix":7}}]}],"ind":3},{"ty":4,"nm":"Shape Layer 8","sr":1,"st":0,"op":5,"ip":0,"hd":false,"ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[-9,204.759,0],"ix":1},"s":{"a":0,"k":[58,58,100],"ix":6},"sk":{"a":0,"k":0},"p":{"a":0,"k":[551,664.759,0],"ix":2},"r":{"a":0,"k":0,"ix":10},"sa":{"a":0,"k":0},"o":{"a":0,"k":100,"ix":11}},"ef":[],"shapes":[{"ty":"gr","bm":0,"hd":false,"mn":"ADBE Vector Group","nm":"Shape 1","ix":1,"cix":2,"np":3,"it":[{"ty":"sh","bm":0,"hd":false,"mn":"ADBE Vector Shape - Group","nm":"Path 1","ix":1,"d":1,"ks":{"a":0,"k":{"c":false,"i":[[-40,-40],[-32,44]],"o":[[40,40],[32,-44]],"v":[[-94,192],[76,188]]},"ix":2}},{"ty":"st","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Stroke","nm":"Stroke 1","lc":2,"lj":1,"ml":4,"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":33,"ix":5},"c":{"a":0,"k":[0.1804,0.0118,0.898,1],"ix":3}},{"ty":"tr","a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"sk":{"a":0,"k":0,"ix":4},"p":{"a":0,"k":[0,0],"ix":2},"r":{"a":0,"k":0,"ix":6},"sa":{"a":0,"k":0,"ix":5},"o":{"a":0,"k":100,"ix":7}}]}],"ind":4},{"ty":3,"nm":"NULL CONTROL ","sr":1,"st":0,"op":240,"ip":0,"hd":false,"ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[50,50,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.19,"y":0},"i":{"x":0.81,"y":1},"s":[631.528,549.528,0],"t":0},{"o":{"x":0.19,"y":0},"i":{"x":0.81,"y":1},"s":[649.528,495.528,0],"t":34},{"o":{"x":0.19,"y":0},"i":{"x":0.81,"y":1},"s":[591.528,501.528,0],"t":85},{"o":{"x":0.19,"y":0},"i":{"x":0.81,"y":1},"s":[595.528,545.528,0],"t":144},{"s":[631.528,549.528,0],"t":183}],"ix":2},"r":{"a":0,"k":0,"ix":10},"sa":{"a":0,"k":0},"o":{"a":0,"k":0,"ix":11}},"ef":[],"ind":5},{"ty":4,"nm":"Shape Layer 7","sr":1,"st":0,"op":240,"ip":0,"hd":false,"ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[-102.472,45.528,0],"ix":1},"s":{"a":0,"k":[39,39,100],"ix":6},"sk":{"a":0,"k":0},"p":{"a":0,"k":[50,50,0],"ix":2},"r":{"a":0,"k":0,"ix":10},"sa":{"a":0,"k":0},"o":{"a":0,"k":100,"ix":11}},"ef":[],"shapes":[{"ty":"gr","bm":0,"hd":false,"mn":"ADBE Vector Group","nm":"Ellipse 1","ix":1,"cix":2,"np":3,"it":[{"ty":"el","bm":0,"hd":false,"mn":"ADBE Vector Shape - Ellipse","nm":"Ellipse Path 1","d":1,"p":{"a":0,"k":[0,0],"ix":3},"s":{"a":0,"k":[115.056,115.056],"ix":2}},{"ty":"st","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Stroke","nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":0,"ix":5},"c":{"a":0,"k":[0.9882,0.8235,0.9882,1],"ix":3}},{"ty":"fl","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Fill","nm":"Fill 1","c":{"a":0,"k":[0.1804,0.0118,0.898,1],"ix":4},"r":1,"o":{"a":0,"k":100,"ix":5}},{"ty":"tr","a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"sk":{"a":0,"k":0,"ix":4},"p":{"a":0,"k":[-102.472,45.528],"ix":2},"r":{"a":0,"k":0,"ix":6},"sa":{"a":0,"k":0,"ix":5},"o":{"a":0,"k":100,"ix":7}}]}],"ind":6,"parent":5},{"ty":4,"nm":"Shape Layer 6","sr":1,"st":0,"op":240,"ip":0,"hd":false,"ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[-102.472,45.528,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6},"sk":{"a":0,"k":0},"p":{"a":0,"k":[50,50,0],"ix":2},"r":{"a":0,"k":0,"ix":10},"sa":{"a":0,"k":0},"o":{"a":0,"k":100,"ix":11}},"ef":[],"shapes":[{"ty":"gr","bm":0,"hd":false,"mn":"ADBE Vector Group","nm":"Ellipse 1","ix":1,"cix":2,"np":3,"it":[{"ty":"el","bm":0,"hd":false,"mn":"ADBE Vector Shape - Ellipse","nm":"Ellipse Path 1","d":1,"p":{"a":0,"k":[0,0],"ix":3},"s":{"a":0,"k":[115.056,115.056],"ix":2}},{"ty":"st","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Stroke","nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":0,"ix":5},"c":{"a":0,"k":[0.9882,0.8235,0.9882,1],"ix":3}},{"ty":"fl","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Fill","nm":"Fill 1","c":{"a":0,"k":[1,1,1,1],"ix":4},"r":1,"o":{"a":0,"k":100,"ix":5}},{"ty":"tr","a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"sk":{"a":0,"k":0,"ix":4},"p":{"a":0,"k":[-102.472,45.528],"ix":2},"r":{"a":0,"k":0,"ix":6},"sa":{"a":0,"k":0,"ix":5},"o":{"a":0,"k":100,"ix":7}}]}],"ind":7,"parent":5},{"ty":3,"nm":"NULL CONTROL 1","sr":1,"st":0,"op":240,"ip":0,"hd":false,"ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[50,50,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.19,"y":0},"i":{"x":0.81,"y":1},"s":[397.528,545.528,0],"t":0},{"o":{"x":0.19,"y":0},"i":{"x":0.81,"y":1},"s":[471.528,511.528,0],"t":48},{"o":{"x":0.19,"y":0},"i":{"x":0.81,"y":1},"s":[444.859,414.862,0],"t":97},{"o":{"x":0.19,"y":0},"i":{"x":0.81,"y":1},"s":[468.186,462.976,0],"t":131},{"s":[397.528,545.528,0],"t":183}],"ix":2},"r":{"a":0,"k":0,"ix":10},"sa":{"a":0,"k":0},"o":{"a":0,"k":0,"ix":11}},"ef":[],"ind":8},{"ty":4,"nm":"Shape Layer 5","sr":1,"st":0,"op":240,"ip":0,"hd":false,"ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[-102.472,45.528,0],"ix":1},"s":{"a":0,"k":[39,39,100],"ix":6},"sk":{"a":0,"k":0},"p":{"a":0,"k":[50,50,0],"ix":2},"r":{"a":0,"k":0,"ix":10},"sa":{"a":0,"k":0},"o":{"a":0,"k":100,"ix":11}},"ef":[],"shapes":[{"ty":"gr","bm":0,"hd":false,"mn":"ADBE Vector Group","nm":"Ellipse 1","ix":1,"cix":2,"np":3,"it":[{"ty":"el","bm":0,"hd":false,"mn":"ADBE Vector Shape - Ellipse","nm":"Ellipse Path 1","d":1,"p":{"a":0,"k":[0,0],"ix":3},"s":{"a":0,"k":[115.056,115.056],"ix":2}},{"ty":"st","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Stroke","nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":0,"ix":5},"c":{"a":0,"k":[0.9882,0.8235,0.9882,1],"ix":3}},{"ty":"fl","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Fill","nm":"Fill 1","c":{"a":0,"k":[0.1804,0.0118,0.898,1],"ix":4},"r":1,"o":{"a":0,"k":100,"ix":5}},{"ty":"tr","a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"sk":{"a":0,"k":0,"ix":4},"p":{"a":0,"k":[-102.472,45.528],"ix":2},"r":{"a":0,"k":0,"ix":6},"sa":{"a":0,"k":0,"ix":5},"o":{"a":0,"k":100,"ix":7}}]}],"ind":9,"parent":8},{"ty":4,"nm":"Shape Layer 4","sr":1,"st":0,"op":240,"ip":0,"hd":false,"ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[-102.472,45.528,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6},"sk":{"a":0,"k":0},"p":{"a":0,"k":[50,50,0],"ix":2},"r":{"a":0,"k":0,"ix":10},"sa":{"a":0,"k":0},"o":{"a":0,"k":100,"ix":11}},"ef":[],"shapes":[{"ty":"gr","bm":0,"hd":false,"mn":"ADBE Vector Group","nm":"Ellipse 1","ix":1,"cix":2,"np":3,"it":[{"ty":"el","bm":0,"hd":false,"mn":"ADBE Vector Shape - Ellipse","nm":"Ellipse Path 1","d":1,"p":{"a":0,"k":[0,0],"ix":3},"s":{"a":0,"k":[115.056,115.056],"ix":2}},{"ty":"st","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Stroke","nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":0,"ix":5},"c":{"a":0,"k":[0.9882,0.8235,0.9882,1],"ix":3}},{"ty":"fl","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Fill","nm":"Fill 1","c":{"a":0,"k":[1,1,1,1],"ix":4},"r":1,"o":{"a":0,"k":100,"ix":5}},{"ty":"tr","a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"sk":{"a":0,"k":0,"ix":4},"p":{"a":0,"k":[-102.472,45.528],"ix":2},"r":{"a":0,"k":0,"ix":6},"sa":{"a":0,"k":0,"ix":5},"o":{"a":0,"k":100,"ix":7}}]}],"ind":10,"parent":8},{"ty":4,"nm":"Shape Layer 3","sr":1,"st":0,"op":722,"ip":0,"hd":false,"ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[49.816,11.816,0],"ix":1},"s":{"a":0,"k":[83,83,100],"ix":6},"sk":{"a":0,"k":0},"p":{"a":0,"k":[543,523,0],"ix":2},"r":{"a":0,"k":592,"ix":10},"sa":{"a":0,"k":0},"o":{"a":0,"k":100,"ix":11}},"ef":[],"shapes":[{"ty":"gr","bm":0,"hd":false,"mn":"ADBE Vector Group","nm":"Ellipse 1","ix":1,"cix":2,"np":3,"it":[{"ty":"sh","bm":0,"hd":false,"mn":"ADBE Vector Shape - Group","nm":"Path 1","ix":1,"d":1,"ks":{"a":1,"k":[{"o":{"x":0.059,"y":0},"i":{"x":0.941,"y":1},"s":[{"c":true,"i":[[-149.015,0],[107.659,-103.03],[277.36,-41.631],[49.73,183.334]],"o":[[149.016,0],[-165.076,157.979],[-217.779,32.688],[-39.011,-143.818]],"v":[[-42,-403.816],[287.085,-134.236],[16,423.816],[-384.256,61.009]]}],"t":0},{"o":{"x":0.059,"y":0},"i":{"x":0.941,"y":1},"s":[{"c":true,"i":[[-240,17.816],[-31.817,-180],[412,-25.816],[-14.184,212]],"o":[[148.607,-11.032],[33.197,187.812],[-219.788,13.772],[20.393,-304.813]],"v":[[-42,-403.816],[401.817,-64],[16,423.816],[-385.816,-18]]}],"t":42},{"o":{"x":0.059,"y":0},"i":{"x":0.941,"y":1},"s":[{"c":true,"i":[[-207.589,8.598],[9.885,-185.411],[224.397,3.796],[142.037,183.222]],"o":[[236.411,-21.402],[-28.058,152.88],[-219.945,-3.75],[-165.963,-254.778]],"v":[[-10.411,-382.598],[376.166,70.53],[-33.362,406.598],[-286.037,72.778]]}],"t":89},{"o":{"x":0.059,"y":0},"i":{"x":0.941,"y":1},"s":[{"c":true,"i":[[-230,-34.184],[-48.997,-234.82],[283.676,1.562],[35.652,241.344]],"o":[[234,25.816],[14.135,180.256],[-219.903,1.011],[-54.348,-378.656]],"v":[[-82,-333.816],[410.997,-75.18],[10,353.816],[-353.652,38.656]]}],"t":138},{"o":{"x":0.059,"y":0},"i":{"x":0.941,"y":1},"s":[{"c":true,"i":[[-149.015,0],[107.659,-103.03],[277.36,-41.631],[49.73,183.334]],"o":[[149.016,0],[-165.076,157.979],[-217.779,32.688],[-39.011,-143.818]],"v":[[-42,-403.816],[287.085,-134.236],[16,423.816],[-384.256,61.009]]}],"t":184},{"s":[{"c":true,"i":[[-149.015,0],[84.908,-122.459],[148.868,6.642],[129.816,152]],"o":[[149.016,0],[-81.817,118],[-220,-9.816],[-96.776,-113.314]],"v":[[-42,-403.816],[381.817,-44],[16,423.816],[-381.816,-2]]}],"t":184.14453125}],"ix":2}},{"ty":"st","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Stroke","nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":0,"ix":5},"c":{"a":0,"k":[0.9961,0.9529,0.8667,1],"ix":3}},{"ty":"fl","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Fill","nm":"Fill 1","c":{"a":0,"k":[1,0.5569,0.9255,1],"ix":4},"r":1,"o":{"a":0,"k":100,"ix":5}},{"ty":"tr","a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"sk":{"a":0,"k":0,"ix":4},"p":{"a":0,"k":[49.816,11.816],"ix":2},"r":{"a":0,"k":0,"ix":6},"sa":{"a":0,"k":0,"ix":5},"o":{"a":0,"k":100,"ix":7}}]}],"ind":11},{"ty":4,"nm":"Shape Layer 10","sr":1,"st":0,"op":240,"ip":0,"hd":false,"ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[-2,441.996,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6},"sk":{"a":0,"k":0},"p":{"a":0,"k":[498,941.996,0],"ix":2},"r":{"a":0,"k":0,"ix":10},"sa":{"a":0,"k":0},"o":{"a":0,"k":100,"ix":11}},"ef":[],"shapes":[{"ty":"gr","bm":0,"hd":false,"mn":"ADBE Vector Group","nm":"Shape 1","ix":1,"cix":2,"np":3,"it":[{"ty":"sh","bm":0,"hd":false,"mn":"ADBE Vector Shape - Group","nm":"Path 1","ix":1,"d":1,"ks":{"a":0,"k":{"c":true,"i":[[238,-2],[0,0],[0,0]],"o":[[-238,2],[0,0],[0,0]],"v":[[-4,270],[-254,612],[250,614]]},"ix":2}},{"ty":"st","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Stroke","nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":0,"ix":5},"c":{"a":0,"k":[0.1804,0.0118,0.898,1],"ix":3}},{"ty":"fl","bm":0,"hd":false,"mn":"ADBE Vector Graphic - Fill","nm":"Fill 1","c":{"a":0,"k":[0.9294,0.3137,0.6196,1],"ix":4},"r":1,"o":{"a":0,"k":100,"ix":5}},{"ty":"tr","a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"sk":{"a":0,"k":0,"ix":4},"p":{"a":0,"k":[0,0],"ix":2},"r":{"a":0,"k":0,"ix":6},"sa":{"a":0,"k":0,"ix":5},"o":{"a":0,"k":100,"ix":7}}]}],"ind":12}]}]
+            };
+
+            var animation = lottie.loadAnimation({
+                container: document.getElementById('animation'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                animationData: animationData
+            });
+        </script>
+    </body>
+    </html>`;
+}
+
+module.exports = {
+    activate,
+    deactivate
+}
