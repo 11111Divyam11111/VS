@@ -21,7 +21,7 @@ The Animated Character Extension adds a fun, animated character to the right cor
 ## Installation
 
 1. Press `Ctrl+P` to open the Quick Open dialog.
-2. Type `ext install your-publisher-name.animated-character-extension`.
+2. Type `ext install divyamRaJPandey.animated-character-extension`.
 3. Reload Visual Studio Code if necessary.
 
 ## Requirements
