@@ -4,7 +4,7 @@
   "description": "just for fun",
   "version": "0.0.1",
   "publisher": "divyamRaJPandey",
-  "icon": "./animation.png",
+  "icon": "https://github.com/11111Divyam11111/VS/blob/main/animation.png?raw=true",
   "engines": {
     "vscode": "^1.91.0"
   },
