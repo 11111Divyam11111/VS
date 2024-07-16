@@ -40,7 +40,7 @@ The Animated Character Extension adds a fun, animated character to the right cor
 
 ## Contributing
 
-If you have any suggestions or encounter any issues, feel free to open an issue or a pull request on our [GitHub repository](https://github.com/your-username/animated-character-extension).
+If you have any suggestions or encounter any issues, feel free to open an issue or a pull request on our [GitHub repository](https://github.com/11111Divyam11111/VS).
 
 ## License
 
